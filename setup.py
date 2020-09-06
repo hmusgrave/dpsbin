@@ -12,6 +12,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/hmusgrave/dpsbin",
+    download_url="https://github.com/hmusgrave/dpsbin/archive/0.0.0.tar.gz",
     packages=setuptools.find_packages(),
     install_requires=['numpy', 'scipy>=1.0.0'],
     classifiers=[
