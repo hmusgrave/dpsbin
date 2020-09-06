@@ -1,4 +1,5 @@
 from dpsbin import exact, monte
+from scipy.stats import wasserstein_distance
 import pytest, numpy as np
 
 @pytest.mark.parametrize('M, T', [
@@ -17,4 +18,4 @@ def test_exact_matches_simulation(M, T):
     b = monte.pmf(M, T)
 
     # TODO: This is pretty crude
-    assert np.linalg.norm(a-b) < 2e-2
+    assert wasserstein_distance(a, b) < 1e-2
