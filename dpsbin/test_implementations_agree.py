@@ -17,5 +17,4 @@ def test_exact_matches_simulation(M, T):
     a = exact.pmf(M, T)
     b = monte.pmf(M, T)
 
-    # TODO: This is pretty crude
     assert wasserstein_distance(a, b) < 1e-2
