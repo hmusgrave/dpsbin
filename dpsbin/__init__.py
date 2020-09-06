@@ -1,3 +1,3 @@
-from .exact import pmf
+from .exact import pmf, with_zeros
 
-__all__ = ['pmf']
+__all__ = ['pmf', 'with_zeros']

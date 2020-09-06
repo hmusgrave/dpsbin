@@ -30,4 +30,10 @@ assert math.isclose(np.sum(probs), 1)
 
 # easily find out how many rolls you'll need on average.
 avg = np.dot(probs, np.arange(len(probs)))
+
+# if you have a 90% chance to miss and not deal the 1d6 damage then
+# you can use with_zeros() to translate the old probability mass array
+# into one that accounts for zeros. Truncate to only considering up
+# to 80 rolls.
+hard_to_hit = dpsbin.with_zeros(80, .9, probs)
 ```

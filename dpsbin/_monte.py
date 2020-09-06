@@ -1,7 +1,8 @@
 import numpy as np
-from random import randint
+from random import randint, random
+from math import inf
 
-def pmf(M, T, trial_count=10_000):
+def pmf(M: int, T: int, trial_count: int=10_000) -> np.array:
     """Computes chance of stopping after k rolls of 1dM trying to reach total T
 
     Args:
@@ -37,3 +38,38 @@ def pmf(M, T, trial_count=10_000):
         rtn[simulate()] += 1
 
     return rtn/np.sum(rtn)
+
+def zero_pmf(M: int, T: int, p_zero: float, trial_count: int=10_000) -> np.array:
+    """Simulates rolling 1dM with a p_zero chance of failure till a total of T is reached
+
+    Args:
+        M: positive integer, max die roll
+        T: non-negative integer, total we're attempting to reach
+        p_zero: float in [0, 1] (inclusive)
+
+    Kwargs:
+        trial_count: positive integer (default 10_000), bigger is better
+            and slower
+    """
+    def simulate():
+        if p_zero==1:
+            return inf
+        t, n = 0, 0
+        while t < T:
+            t, n = t+randint(1,M)*(random()>p_zero), n+1
+        return n
+
+    rtn = [0]*(T+1)
+    for _ in range(trial_count):
+        v = simulate()
+        if v==inf:
+            continue
+        if v >= len(rtn):
+            rtn += [0]*len(rtn)
+        rtn[v] += 1
+    rtn = np.array(rtn)
+    s = np.sum(rtn)
+
+    if s:
+        return rtn/s
+    return rtn
