@@ -65,7 +65,7 @@ def zero_pmf(M: int, T: int, p_zero: float, trial_count: int=10_000) -> np.array
         if v==inf:
             continue
         if v >= len(rtn):
-            rtn += [0]*len(rtn)
+            rtn += [0]*max(v+1-len(rtn), len(rtn))
         rtn[v] += 1
     rtn = np.array(rtn)
     s = np.sum(rtn)

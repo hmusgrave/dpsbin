@@ -5,14 +5,14 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="dpsbin",
-    version="0.0.3",
+    version="0.0.4",
     author="Hans Musgrave",
     author_email="Hans.Musgrave@gmail.com",
     description="Compute exact DPS for turn-based games",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/hmusgrave/dpsbin",
-    download_url="https://github.com/hmusgrave/dpsbin/archive/0.0.3.tar.gz",
+    download_url="https://github.com/hmusgrave/dpsbin/archive/0.0.4.tar.gz",
     packages=setuptools.find_packages(),
     install_requires=['numpy', 'scipy>=1.0.0'],
     setup_requires=['wheel'],

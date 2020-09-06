@@ -77,14 +77,15 @@ def pmf(M: int, T: int) -> np.array:
     # If the total is 0, we always achieve that in 0 rolls.
     #
     if not T:
-        return np.array([1.])
+        return np.array([1.], dtype=np.longdouble)
 
     #
     # If the total is positive, we can't possibly get there in
     # 0 rolls, so rtn[0]==0. All other values will be over-written.
     #
-    rtn = np.zeros(T+1)
-    buff = np.zeros(T+1)
+    rtn = np.empty(T+1, dtype=np.longdouble)
+    rtn[0] = 0.
+    buff = np.zeros(T+1, dtype=np.longdouble)
 
     #
     # The base case k==1. buff[i] is the chance that a single roll
@@ -149,10 +150,10 @@ def _binarr(k: int) -> np.array:
         Argument validation is the responsibility of the caller.
     """
     if not k:
-        return np.array([], dtype=float)
+        return np.array([], dtype=np.longdouble)
 
-    r = np.arange(1, k, dtype=float)
-    multiplicand = np.empty(k)
+    r = np.arange(1, k, dtype=np.longdouble)
+    multiplicand = np.empty(k, dtype=np.longdouble)
     multiplicand[0] = 1.
     multiplicand[1:] = (k-r)/r
     return np.cumprod(multiplicand, out=multiplicand)
@@ -220,7 +221,7 @@ def with_zeros(k: int, p: float, pma: np.array) -> np.array:
     if k==0:
         return pma[:1]
 
-    rtn = np.zeros(k+1)
+    rtn = np.zeros(k+1, dtype=np.longdouble)
 
     #
     # If it's possible to achieve the goal with 0 actions and if actions are
@@ -264,8 +265,7 @@ def with_zeros(k: int, p: float, pma: np.array) -> np.array:
         # be careful not to use it in any calculations.
         #
         a = k+1-i
-        r = np.arange(a)
-        buff[:1-i] =(a-r)/(a)/p*buff[:1-i]
+        buff[:1-i] =(a-np.arange(a, dtype=np.longdouble))/(a)/p*buff[:1-i]
         rtn[-i] = np.sum(buff[:1-i])
 
     #
