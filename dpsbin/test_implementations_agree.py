@@ -1,4 +1,4 @@
-from dpsbin import exact, _monte as monte
+from dpsbin import _exact as exact, _monte as monte
 from scipy.stats import wasserstein_distance
 import pytest, numpy as np
 
