@@ -273,7 +273,7 @@ def with_zeros(k: int, p: float, pma: np.array) -> np.array:
     # when we get this far. Thankfully these two elements don't have much
     # going on.
     #
-    rtn[0] = 0.
+    # rtn[0] already 0 from np.zeros
     rtn[1] = pma[1]*(1-p)
 
     return rtn
