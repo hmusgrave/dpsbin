@@ -17,6 +17,10 @@ python -m pip install dpsbin
 
 Alternatively, the latest version can be easily downloaded and installed locally.
 ```
+python -m pip install -e git+https://github.com/hmusgrave/dpsbin.git#egg=dpsbin
+```
+
+```
 git clone https://github.com/hmusgrave/dpsbin.git
 cd dpsbin
 python -m pip install -e .
