@@ -9,13 +9,8 @@ Common methods for estimating how long it takes to finish off an opponent in typ
 
 # Installation
 
-dpsbin requires Python 3 or greater and is available on PyPI.
+dpsbin requires Python 3 or greater, and the latest version can be easily downloaded and installed locally.
 
-```
-python -m pip install dpsbin
-```
-
-Alternatively, the latest version can be easily downloaded and installed locally.
 ```
 python -m pip install -e git+https://github.com/hmusgrave/dpsbin.git#egg=dpsbin
 ```
